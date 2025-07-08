@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://s001033.github.io/react-simple-clock",
+  "homepage": "https://elmetal.github.io/react-simple-clock",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
