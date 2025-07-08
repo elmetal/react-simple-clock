@@ -1,0 +1,91 @@
+.clockContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 2rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    font-family: 'Arial', sans-serif;
+}
+
+.clockWrapper {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 3rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    transition: transform 0.3s ease;
+
+    &:hover {
+        transform: translateY(-5px);
+    }
+}
+
+.time {
+    font-size: 4rem;
+    font-weight: 300;
+    margin-bottom: 1rem;
+    letter-spacing: 0.1em;
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+
+    @media (max-width: 768px) {
+        font-size: 2.5rem;
+    }
+
+    @media (max-width: 480px) {
+        font-size: 2rem;
+    }
+}
+
+.date {
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-bottom: 0.5rem;
+    opacity: 0.9;
+
+    @media (max-width: 768px) {
+        font-size: 1.2rem;
+    }
+}
+
+.dayOfWeek {
+    font-size: 1.2rem;
+    font-weight: 300;
+    margin-bottom: 2rem;
+    opacity: 0.8;
+
+    @media (max-width: 768px) {
+        font-size: 1rem;
+    }
+}
+
+.timezone {
+    font-size: 0.9rem;
+    font-weight: 300;
+    opacity: 0.7;
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+
+    @media (max-width: 768px) {
+        font-size: 0.8rem;
+    }
+}
+
+.title {
+    font-size: 1.8rem;
+    font-weight: 400;
+    margin-bottom: 3rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+
+    @media (max-width: 768px) {
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
+    }
+}
