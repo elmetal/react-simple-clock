@@ -1,20 +1,19 @@
 # React Simple Clock
 
-GitHub Pagesにホストされるシンプルなデジタル時計アプリケーション
+A simple digital clock application built with React
 
-## 概要
+## Overview
 
-このプロジェクトは、Reactを使用して開発されたデジタル時計アプリケーションです。ユーザーのブラウザのタイムゾーンを自動検出し、日本語で時刻を表示します。
+This project is a digital clock application built with React. It automatically detects the user's browser timezone and displays the time in Japanese format.
 
-## 主な機能
+## Features
 
-- リアルタイムデジタル時計
-- 自動タイムゾーン検出
-- 日本語での日時表示
-- レスポンシブデザイン
-- GitHub Pagesでのホスティング
+- Real-time digital clock
+- Automatic timezone detection
+- Japanese date and time display
+- Responsive design
 
-## 技術スタック
+## Tech Stack
 
 - React 19
 - TypeScript
@@ -22,31 +21,47 @@ GitHub Pagesにホストされるシンプルなデジタル時計アプリケ�
 - Sass
 - GitHub Actions (CI/CD)
 
-## 開発環境のセットアップ
+## Development Setup
 
 ```bash
-# 依存関係のインストール
+# Install dependencies
 npm install
 
-# 開発サーバーの起動
+# Start development server
 npm run dev
 
-# ビルド
+# Build
 npm run build
 
-# プレビュー
+# Preview
 npm run preview
 ```
 
-## デプロイ
+## Running Locally
 
-このプロジェクトはGitHub Actionsを使用してGitHub Pagesに自動デプロイされます。
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/elmetal/react-simple-clock.git
+   cd react-simple-clock
+   ```
 
-手動デプロイの場合：
-```bash
-npm run deploy
-```
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
 
-## ライセンス
+3. **Start the development server:**
+   ```bash
+   npm run dev
+   ```
 
-このプロジェクトはMITライセンスの下でライセンスされています。
+4. **Open your browser and navigate to:**
+   ```
+   http://localhost/react-simple-clock/
+   ```
+
+The application will automatically update when you make changes to the code.
+
+## License
+
+This project is licensed under the MIT License.
