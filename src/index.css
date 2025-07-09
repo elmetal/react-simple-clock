@@ -10,12 +10,22 @@
   --text-color: #ffffff;
   --background-alpha: rgba(255, 255, 255, 0.1);
   --border-alpha: rgba(255, 255, 255, 0.2);
+  --focus-color: #ffd700;
 
   /* 日本語フォント最適化 */
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  /* 高コントラスト対応 */
+  @media (prefers-contrast: high) {
+    --primary-color: #000;
+    --secondary-color: #000;
+    --text-color: #fff;
+    --background-alpha: rgba(255, 255, 255, 0.9);
+    --border-alpha: rgba(255, 255, 255, 1);
+  }
 }
 
 /* 基本リセット */
@@ -25,11 +35,33 @@
   box-sizing: border-box;
 }
 
+/* アクセシビリティ対応 */
+*:focus {
+  outline: 3px solid var(--focus-color);
+  outline-offset: 2px;
+}
+
+/* フォーカス表示の無効化を防ぐ */
+*:focus:not(:focus-visible) {
+  outline: none;
+}
+
+*:focus-visible {
+  outline: 3px solid var(--focus-color);
+  outline-offset: 2px;
+}
+
 html,
 body {
   height: 100%;
   width: 100%;
   overflow-x: hidden;
+  scroll-behavior: smooth;
+
+  /* アニメーション無効化対応 */
+  @media (prefers-reduced-motion: reduce) {
+    scroll-behavior: auto;
+  }
 }
 
 body {
@@ -38,6 +70,12 @@ body {
   background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
   color: var(--text-color);
   min-height: 100vh;
+
+  /* 高コントラスト対応 */
+  @media (prefers-contrast: high) {
+    background: #000;
+    color: #fff;
+  }
 }
 
 #root {
@@ -47,21 +85,50 @@ body {
   padding: 0;
 }
 
+/* スクリーンリーダー対応 */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* 高コントラスト対応のリンク */
 a {
   font-weight: 500;
-  color: #646cff;
+  color: #535bf2;
   text-decoration: inherit;
+
+  @media (prefers-contrast: high) {
+    color: #fff;
+    text-decoration: underline;
+  }
 }
 
 a:hover {
-  color: #535bf2;
+  color: #747bff;
+
+  @media (prefers-contrast: high) {
+    color: #ccc;
+  }
 }
 
+/* 見出しのアクセシビリティ */
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
+
+  @media (prefers-contrast: high) {
+    font-weight: 700;
+  }
 }
 
+/* ボタンのアクセシビリティ */
 button {
   border-radius: 8px;
   border: 1px solid transparent;
@@ -70,30 +137,60 @@ button {
   font-weight: 500;
   font-family: inherit;
   background-color: #1a1a1a;
+  color: #fff;
   cursor: pointer;
   transition: border-color 0.25s;
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
+
+  @media (prefers-contrast: high) {
+    background-color: #000;
+    color: #fff;
+    border: 2px solid #fff;
+  }
 }
 
 button:hover {
   border-color: #646cff;
+
+  @media (prefers-contrast: high) {
+    background-color: #333;
+  }
 }
 
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+
+  @media (prefers-contrast: high) {
+    outline: 3px solid #fff;
+  }
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+/* 大きなフォントサイズ対応 */
+@media (prefers-reduced-data: reduce) {
+  body {
+    background: var(--primary-color);
+  }
+}
+
+/* 印刷対応 */
+@media print {
+  body {
+    background: white;
+    color: black;
   }
 
-  a:hover {
-    color: #747bff;
-  }
-
-  button {
-    background-color: #f9f9f9;
+  .sr-only {
+    position: static;
+    width: auto;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
   }
 }

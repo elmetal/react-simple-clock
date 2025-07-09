@@ -8,6 +8,12 @@
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
     font-family: 'Arial', sans-serif;
+
+    /* 高コントラスト対応 */
+    @media (prefers-contrast: high) {
+        background: #000;
+        color: #fff;
+    }
 }
 
 .clockWrapper {
@@ -20,8 +26,33 @@
     text-align: center;
     transition: transform 0.3s ease;
 
-    &:hover {
-        transform: translateY(-5px);
+    /* フォーカス管理 */
+    &:focus-within {
+        outline: 3px solid #ffd700;
+        outline-offset: 2px;
+    }
+
+    /* アニメーション無効化対応 */
+    @media (prefers-reduced-motion: reduce) {
+        transition: none;
+
+        &:hover {
+            transform: none;
+        }
+    }
+
+    /* 通常のホバー効果 */
+    @media (prefers-reduced-motion: no-preference) {
+        &:hover {
+            transform: translateY(-5px);
+        }
+    }
+
+    /* 高コントラスト対応 */
+    @media (prefers-contrast: high) {
+        background: rgba(255, 255, 255, 0.9);
+        color: #000;
+        border: 2px solid #fff;
     }
 }
 
@@ -32,12 +63,26 @@
     letter-spacing: 0.05em;
     text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 
+    /* アクセシビリティ強化 */
+    line-height: 1.2;
+
     @media (max-width: 768px) {
         font-size: 3rem;
     }
 
     @media (max-width: 480px) {
         font-size: 2.5rem;
+    }
+
+    /* 高コントラスト対応 */
+    @media (prefers-contrast: high) {
+        text-shadow: none;
+        font-weight: 700;
+    }
+
+    /* 文字サイズ調整 */
+    @media (prefers-reduced-motion: reduce) {
+        transition: none;
     }
 }
 
@@ -46,9 +91,16 @@
     font-weight: 300;
     margin-bottom: 0.8rem;
     opacity: 0.9;
+    line-height: 1.3;
 
     @media (max-width: 768px) {
         font-size: 1.4rem;
+    }
+
+    /* 高コントラスト対応 */
+    @media (prefers-contrast: high) {
+        opacity: 1;
+        font-weight: 600;
     }
 }
 
@@ -57,9 +109,16 @@
     font-weight: 300;
     margin-bottom: 2.5rem;
     opacity: 0.8;
+    line-height: 1.3;
 
     @media (max-width: 768px) {
         font-size: 1.1rem;
+    }
+
+    /* 高コントラスト対応 */
+    @media (prefers-contrast: high) {
+        opacity: 1;
+        font-weight: 600;
     }
 }
 
@@ -72,9 +131,46 @@
     border-radius: 15px;
     border: 1px solid rgba(255, 255, 255, 0.1);
     display: inline-block;
+    line-height: 1.4;
 
     @media (max-width: 768px) {
         font-size: 0.8rem;
         padding: 0.6rem 1.2rem;
+    }
+
+    /* 高コントラスト対応 */
+    @media (prefers-contrast: high) {
+        opacity: 1;
+        font-weight: 600;
+        background: rgba(255, 255, 255, 0.8);
+        color: #000;
+        border: 1px solid #000;
+    }
+}
+
+/* スクリーンリーダー専用テキスト */
+.visuallyHidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* キーボードナビゲーション対応 */
+*:focus {
+    outline: 3px solid #ffd700;
+    outline-offset: 2px;
+}
+
+/* 大きなフォントサイズ対応 */
+@media (prefers-reduced-data: reduce) {
+    .clockWrapper {
+        backdrop-filter: none;
+        background: rgba(255, 255, 255, 0.2);
     }
 }
